@@ -22,7 +22,7 @@ open class DataRenderer: Renderer
     ///
     /// Renderers should ensure that the order of elements makes sense to a client presenting an audio-only interface to a user.
     /// Subclasses should populate this array in drawData() or drawDataSet() to make the chart accessible.
-    @objc final var accessibleChartElements: [NSUIAccessibilityElement] = []
+    @objc open var accessibleChartElements: [NSUIAccessibilityElement] = []
 
     @objc public let animator: Animator
     

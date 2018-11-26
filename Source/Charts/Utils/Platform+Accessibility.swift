@@ -17,7 +17,7 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
 {
     open weak var containerView: UIView?
 
-    final var isHeader: Bool = false
+    open var isHeader: Bool = false
     {
         didSet
         {
@@ -25,7 +25,7 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
         }
     }
 
-    final var isSelected: Bool = false
+    open var isSelected: Bool = false
         {
         didSet
         {
@@ -64,7 +64,7 @@ extension NSUIView
         return nil
     }
 
-    public final override var isAccessibilityElement: Bool
+    open override var isAccessibilityElement: Bool
     {
         get { return false } // Return false here, so we can make individual elements accessible
         set { }
@@ -107,7 +107,7 @@ open class NSUIAccessibilityElement: NSAccessibilityElement
 {
     open weak var containerView: NSView?
 
-    final var isHeader: Bool = false
+    open var isHeader: Bool = false
     {
         didSet
         {
@@ -115,7 +115,7 @@ open class NSUIAccessibilityElement: NSAccessibilityElement
         }
     }
 
-    final var isSelected: Bool = false
+    open var isSelected: Bool = false
     {
         didSet
         {

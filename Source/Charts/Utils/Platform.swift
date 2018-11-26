@@ -27,12 +27,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
     extension NSUITapGestureRecognizer
     {
-        @objc final func nsuiNumberOfTouches() -> Int
+        @objc open func nsuiNumberOfTouches() -> Int
         {
             return numberOfTouches
         }
         
-        @objc final var nsuiNumberOfTapsRequired: Int
+        @objc open var nsuiNumberOfTapsRequired: Int
         {
             get
             {
@@ -47,12 +47,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
     extension NSUIPanGestureRecognizer
     {
-        @objc final func nsuiNumberOfTouches() -> Int
+        @objc open func nsuiNumberOfTouches() -> Int
         {
             return numberOfTouches
         }
         
-        @objc final func nsuiLocationOfTouch(_ touch: Int, inView: UIView?) -> CGPoint
+        @objc open func nsuiLocationOfTouch(_ touch: Int, inView: UIView?) -> CGPoint
         {
             return super.location(ofTouch: touch, in: inView)
         }
@@ -61,7 +61,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 #if !os(tvOS)
     extension NSUIRotationGestureRecognizer
     {
-        @objc final var nsuiRotation: CGFloat
+        @objc open var nsuiRotation: CGFloat
         {
             get { return rotation }
             set { rotation = newValue }
@@ -72,7 +72,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 #if !os(tvOS)
     extension NSUIPinchGestureRecognizer
     {
-        @objc final var nsuiScale: CGFloat
+        @objc open var nsuiScale: CGFloat
         {
             get
             {
@@ -84,7 +84,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
             }
         }
         
-        @objc final func nsuiLocationOfTouch(_ touch: Int, inView: UIView?) -> CGPoint
+        @objc open func nsuiLocationOfTouch(_ touch: Int, inView: UIView?) -> CGPoint
         {
             return super.location(ofTouch: touch, in: inView)
         }
@@ -93,22 +93,22 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 
 	open class NSUIView: UIView
     {
-		public final override func touchesBegan(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
+		open override func touchesBegan(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
         {
 			self.nsuiTouchesBegan(touches, withEvent: event)
 		}
 
-		public final override func touchesMoved(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
+		open override func touchesMoved(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
         {
 			self.nsuiTouchesMoved(touches, withEvent: event)
 		}
 
-		public final override func touchesEnded(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
+		open override func touchesEnded(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
         {
 			self.nsuiTouchesEnded(touches, withEvent: event)
 		}
 
-		public final override func touchesCancelled(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
+		open override func touchesCancelled(_ touches: Set<NSUITouch>, with event: NSUIEvent?)
         {
 			self.nsuiTouchesCancelled(touches, withEvent: event)
 		}
@@ -141,7 +141,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 
 	extension UIView
     {
-		@objc final var nsuiGestureRecognizers: [NSUIGestureRecognizer]?
+		@objc open var nsuiGestureRecognizers: [NSUIGestureRecognizer]?
         {
 			return self.gestureRecognizers
 		}
@@ -158,7 +158,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
     extension UIScreen
     {
-        @objc final var nsuiScale: CGFloat
+        @objc open var nsuiScale: CGFloat
         {
             return self.scale
         }
@@ -307,12 +307,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 	/** The 'tap' gesture is mapped to clicks. */
 	extension NSUITapGestureRecognizer
     {
-		final func nsuiNumberOfTouches() -> Int
+		open func nsuiNumberOfTouches() -> Int
         {
 			return 1
 		}
         
-		final var nsuiNumberOfTapsRequired: Int
+		open var nsuiNumberOfTapsRequired: Int
         {
 			get
             {
@@ -327,13 +327,13 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 
 	extension NSUIPanGestureRecognizer
     {
-		final func nsuiNumberOfTouches() -> Int
+		open func nsuiNumberOfTouches() -> Int
         {
 			return 1
 		}
         
         /// FIXME: Currently there are no more than 1 touch in OSX gestures, and not way to create custom touch gestures.
-		final func nsuiLocationOfTouch(_ touch: Int, inView: NSView?) -> NSPoint
+		open func nsuiLocationOfTouch(_ touch: Int, inView: NSView?) -> NSPoint
         {
 			return super.location(in: inView)
 		}
@@ -342,12 +342,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     extension NSUIRotationGestureRecognizer
     {
         /// FIXME: Currently there are no velocities in OSX gestures, and not way to create custom touch gestures.
-        final var velocity: CGFloat
+        open var velocity: CGFloat
         {
             return 0.1
         }
         
-        final var nsuiRotation: CGFloat
+        open var nsuiRotation: CGFloat
         {
             get { return -rotation }
             set { rotation = -newValue }
@@ -356,7 +356,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
     extension NSUIPinchGestureRecognizer
     {
-        final var nsuiScale: CGFloat
+        open var nsuiScale: CGFloat
         {
             get
             {
@@ -369,7 +369,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
         }
         
         /// FIXME: Currently there are no more than 1 touch in OSX gestures, and not way to create custom touch gestures.
-        final func nsuiLocationOfTouch(_ touch: Int, inView view: NSView?) -> NSPoint
+        open func nsuiLocationOfTouch(_ touch: Int, inView view: NSView?) -> NSPoint
         {
             return super.location(in: view)
         }
@@ -377,7 +377,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 
 	extension NSView
     {
-		final var nsuiGestureRecognizers: [NSGestureRecognizer]?
+		open var nsuiGestureRecognizers: [NSGestureRecognizer]?
         {
 			return self.gestureRecognizers
 		}
@@ -411,7 +411,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
             setAccessibilityRole(role)
         }
 
-		public final override var isFlipped: Bool
+		open override var isFlipped: Bool
         {
 			return true
 		}
@@ -421,17 +421,17 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 			self.setNeedsDisplay(self.bounds)
 		}
         
-		public final override func touchesBegan(with event: NSEvent)
+		open override func touchesBegan(with event: NSEvent)
         {
 			self.nsuiTouchesBegan(event.touches(matching: .any, in: self), withEvent: event)
 		}
 
-		public final override func touchesEnded(with event: NSEvent)
+		open override func touchesEnded(with event: NSEvent)
         {
 			self.nsuiTouchesEnded(event.touches(matching: .any, in: self), withEvent: event)
 		}
 
-		public final override func touchesMoved(with event: NSEvent)
+		open override func touchesMoved(with event: NSEvent)
         {
 			self.nsuiTouchesMoved(event.touches(matching: .any, in: self), withEvent: event)
 		}
@@ -476,7 +476,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
             }
         }
 
-		final var nsuiLayer: CALayer?
+		open var nsuiLayer: CALayer?
         {
 			return self.layer
 		}
@@ -493,7 +493,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 
 	extension NSScreen
     {
-		final var nsuiScale: CGFloat
+		open var nsuiScale: CGFloat
         {
 			return self.backingScaleFactor
 		}
