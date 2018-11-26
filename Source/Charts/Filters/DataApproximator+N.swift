@@ -54,11 +54,11 @@ public struct LineAlt {
 }
 
 extension LineAlt: Comparable {
-    static func ==(lhs: LineAlt, rhs: LineAlt) -> Bool {
+    public static func ==(lhs: LineAlt, rhs: LineAlt) -> Bool {
         return (lhs.start == rhs.start) && (lhs.end == rhs.end) && (lhs.index == rhs.index)
     }
     
-    static func <(lhs: LineAlt, rhs: LineAlt) -> Bool {
+    public static func <(lhs: LineAlt, rhs: LineAlt) -> Bool {
         return lhs.distance < rhs.distance
     }
 }

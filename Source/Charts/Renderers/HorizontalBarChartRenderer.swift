@@ -30,7 +30,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
     }
     
     // [CGRect] per dataset
-    public var _buffers = [Buffer]()
+    //public var _buffers = [Buffer]()
     
     open override func initBuffers()
     {
@@ -65,7 +65,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         }
     }
     
-    public func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
+    public override func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
     {
         guard let
             dataProvider = dataProvider,
@@ -177,7 +177,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         }
     }
     
-    public var _barShadowRectBuffer: CGRect = CGRect()
+    //public var _barShadowRectBuffer: CGRect = CGRect()
     
     open override func drawDataSet(context: CGContext, dataSet: IBarChartDataSet, index: Int)
     {
