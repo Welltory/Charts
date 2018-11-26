@@ -42,7 +42,8 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
 
     open class Buffer
     {
-        var rects = [CGRect]()
+        public init(){}
+        open var rects = [CGRect]()
     }
     
     @objc open weak var dataProvider: BarChartDataProvider?
