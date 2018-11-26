@@ -38,12 +38,12 @@ open class BarHighlighter: ChartHighlighter
         }
     }
     
-    internal override func getDistance(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) -> CGFloat
+    public override func getDistance(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) -> CGFloat
     {
         return abs(x1 - x2)
     }
     
-    internal override var data: ChartData?
+    public override var data: ChartData?
     {
         return (chart as? BarChartDataProvider)?.barData
     }

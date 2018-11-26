@@ -13,16 +13,16 @@ import Foundation
 
 open class ChartData: NSObject
 {
-    internal var _yMax: Double = -Double.greatestFiniteMagnitude
-    internal var _yMin: Double = Double.greatestFiniteMagnitude
-    internal var _xMax: Double = -Double.greatestFiniteMagnitude
-    internal var _xMin: Double = Double.greatestFiniteMagnitude
-    internal var _leftAxisMax: Double = -Double.greatestFiniteMagnitude
-    internal var _leftAxisMin: Double = Double.greatestFiniteMagnitude
-    internal var _rightAxisMax: Double = -Double.greatestFiniteMagnitude
-    internal var _rightAxisMin: Double = Double.greatestFiniteMagnitude
+    public var _yMax: Double = -Double.greatestFiniteMagnitude
+    public var _yMin: Double = Double.greatestFiniteMagnitude
+    public var _xMax: Double = -Double.greatestFiniteMagnitude
+    public var _xMin: Double = Double.greatestFiniteMagnitude
+    public var _leftAxisMax: Double = -Double.greatestFiniteMagnitude
+    public var _leftAxisMin: Double = Double.greatestFiniteMagnitude
+    public var _rightAxisMax: Double = -Double.greatestFiniteMagnitude
+    public var _rightAxisMin: Double = Double.greatestFiniteMagnitude
     
-    internal var _dataSets = [IChartDataSet]()
+    public var _dataSets = [IChartDataSet]()
     
     public override init()
     {
@@ -45,7 +45,7 @@ open class ChartData: NSObject
         self.init(dataSets: dataSet === nil ? nil : [dataSet!])
     }
     
-    internal func initialize(dataSets: [IChartDataSet])
+    public func initialize(dataSets: [IChartDataSet])
     {
         notifyDataChanged()
     }
@@ -351,7 +351,7 @@ open class ChartData: NSObject
     ///   - type:
     ///   - ignorecase: if true, the search is not case-sensitive
     /// - Returns: The index of the DataSet Object with the given label. Sensitive or not.
-    internal func getDataSetIndexByLabel(_ label: String, ignorecase: Bool) -> Int
+    public func getDataSetIndexByLabel(_ label: String, ignorecase: Bool) -> Int
     {
         if ignorecase
         {
@@ -382,7 +382,7 @@ open class ChartData: NSObject
     }
     
     /// - Returns: The labels of all DataSets as a string array.
-    internal func dataSetLabels() -> [String]
+    public func dataSetLabels() -> [String]
     {
         var types = [String]()
         

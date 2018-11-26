@@ -16,7 +16,7 @@ import CoreGraphics
 open class CombinedHighlighter: ChartHighlighter
 {
     /// bar highlighter for supporting stacked highlighting
-    private var barHighlighter: BarHighlighter?
+    public var barHighlighter: BarHighlighter?
     
     @objc public init(chart: CombinedChartDataProvider, barDataProvider: BarChartDataProvider)
     {

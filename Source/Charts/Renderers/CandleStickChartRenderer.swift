@@ -52,12 +52,12 @@ open class CandleStickChartRenderer: LineScatterCandleRadarRenderer
         }
     }
     
-    private var _shadowPoints = [CGPoint](repeating: CGPoint(), count: 4)
-    private var _rangePoints = [CGPoint](repeating: CGPoint(), count: 2)
-    private var _openPoints = [CGPoint](repeating: CGPoint(), count: 2)
-    private var _closePoints = [CGPoint](repeating: CGPoint(), count: 2)
-    private var _bodyRect = CGRect()
-    private var _lineSegments = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _shadowPoints = [CGPoint](repeating: CGPoint(), count: 4)
+    public var _rangePoints = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _openPoints = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _closePoints = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _bodyRect = CGRect()
+    public var _lineSegments = [CGPoint](repeating: CGPoint(), count: 2)
     
     @objc open func drawDataSet(context: CGContext, dataSet: ICandleChartDataSet)
     {
@@ -416,7 +416,7 @@ open class CandleStickChartRenderer: LineScatterCandleRadarRenderer
         context.restoreGState()
     }
 
-    private func createAccessibleElement(withIndex idx: Int,
+    public func createAccessibleElement(withIndex idx: Int,
                                          container: CandleChartDataProvider,
                                          dataSet: ICandleChartDataSet,
                                          modifier: (NSUIAccessibilityElement) -> ()) -> NSUIAccessibilityElement {

@@ -57,7 +57,7 @@ open class DataRenderer: Renderer
         fatalError("drawHighlighted() cannot be called on DataRenderer")
     }
     
-    /// An opportunity for initializing internal buffers used for rendering with a new size.
+    /// An opportunity for initializing public buffers used for rendering with a new size.
     /// Since this might do memory allocations, it should only be called if necessary.
     @objc open func initBuffers() { }
     
@@ -74,7 +74,7 @@ open class DataRenderer: Renderer
     ///   - data: A non optional data source about the chart
     ///   - defaultDescription: A simple string describing the type/design of Chart.
     /// - Returns: A header ```NSUIAccessibilityElement``` that can be added to accessibleChartElements.
-    @objc internal func createAccessibleHeader(usingChart chart: ChartViewBase,
+    @objc public func createAccessibleHeader(usingChart chart: ChartViewBase,
                                         andData data: ChartData,
                                         withDefaultDescription defaultDescription: String = "Chart") -> NSUIAccessibilityElement
     {

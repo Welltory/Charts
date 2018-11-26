@@ -19,7 +19,7 @@ import CoreGraphics
 /// BarChart with horizontal bar orientation. In this implementation, x- and y-axis are switched.
 open class HorizontalBarChartView: BarChartView
 {
-    internal override func initialize()
+    public override func initialize()
     {
         super.initialize()
         
@@ -34,7 +34,7 @@ open class HorizontalBarChartView: BarChartView
         self.highlighter = HorizontalBarHighlighter(chart: self)
     }
     
-    internal override func calculateLegendOffsets(offsetLeft: inout CGFloat, offsetTop: inout CGFloat, offsetRight: inout CGFloat, offsetBottom: inout CGFloat)
+    public override func calculateLegendOffsets(offsetLeft: inout CGFloat, offsetTop: inout CGFloat, offsetRight: inout CGFloat, offsetBottom: inout CGFloat)
     {
         guard
             let legend = _legend,
@@ -95,7 +95,7 @@ open class HorizontalBarChartView: BarChartView
         }
     }
     
-    internal override func calculateOffsets()
+    public override func calculateOffsets()
     {
         var offsetLeft: CGFloat = 0.0,
         offsetRight: CGFloat = 0.0,
@@ -153,7 +153,7 @@ open class HorizontalBarChartView: BarChartView
         prepareValuePxMatrix()
     }
     
-    internal override func prepareValuePxMatrix()
+    public override func prepareValuePxMatrix()
     {
         _rightAxisTransformer.prepareMatrixValuePx(chartXMin: rightAxis._axisMinimum, deltaX: CGFloat(rightAxis.axisRange), deltaY: CGFloat(_xAxis.axisRange), chartYMin: _xAxis._axisMinimum)
         _leftAxisTransformer.prepareMatrixValuePx(chartXMin: leftAxis._axisMinimum, deltaX: CGFloat(leftAxis.axisRange), deltaY: CGFloat(_xAxis.axisRange), chartYMin: _xAxis._axisMinimum)

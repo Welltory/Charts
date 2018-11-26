@@ -37,10 +37,10 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
     /// This is done to provide numerical inference across datasets to a screenreader user, in the same way that a sighted individual
     /// uses a multi-dataset bar chart.
     ///
-    /// The ````internal```` specifier is to allow subclasses (HorizontalBar) to populate the same array
-    internal lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
+    /// The ````public```` specifier is to allow subclasses (HorizontalBar) to populate the same array
+    public lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
 
-    private class Buffer
+    public class Buffer
     {
         var rects = [CGRect]()
     }
@@ -55,7 +55,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
     }
     
     // [CGRect] per dataset
-    private var _buffers = [Buffer]()
+    public var _buffers = [Buffer]()
     
     open override func initBuffers()
     {
@@ -90,7 +90,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
         }
     }
     
-    private func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
+    public func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
     {
         guard
             let dataProvider = dataProvider,
@@ -317,7 +317,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
         accessibilityPostLayoutChangedNotification()
     }
 
-    private var _barShadowRectBuffer: CGRect = CGRect()
+    public var _barShadowRectBuffer: CGRect = CGRect()
 
     @objc open func drawDataSet(context: CGContext, dataSet: IBarChartDataSet, index: Int)
     {
@@ -817,14 +817,14 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
     }
 
     /// Sets the drawing position of the highlight object based on the given bar-rect.
-    internal func setHighlightDrawPos(highlight high: Highlight, barRect: CGRect)
+    public func setHighlightDrawPos(highlight high: Highlight, barRect: CGRect)
     {
         high.setDraw(x: barRect.midX, y: barRect.origin.y)
     }
 
     /// Creates a nested array of empty subarrays each of which will be populated with NSUIAccessibilityElements.
-    /// This is marked internal to support HorizontalBarChartRenderer as well.
-    internal func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
+    /// This is marked public to support HorizontalBarChartRenderer as well.
+    public func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
     {
         guard let chart = dataProvider as? BarChartView else { return [] }
 
@@ -837,8 +837,8 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
 
     /// Creates an NSUIAccessibleElement representing the smallest meaningful bar of the chart
     /// i.e. in case of a stacked chart, this returns each stack, not the combined bar.
-    /// Note that it is marked internal to support subclass modification in the HorizontalBarChart.
-    internal func createAccessibleElement(withIndex idx: Int,
+    /// Note that it is marked public to support subclass modification in the HorizontalBarChart.
+    public func createAccessibleElement(withIndex idx: Int,
                                           container: BarChartView,
                                           dataSet: IBarChartDataSet,
                                           dataSetIndex: Int,

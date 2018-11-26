@@ -24,7 +24,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         case horizontalBezier
     }
     
-    private func initialize()
+    public func initialize()
     {
         // default color
         circleColors.append(NSUIColor(red: 140.0/255.0, green: 234.0/255.0, blue: 255.0/255.0, alpha: 1.0))
@@ -51,7 +51,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     /// **default**: Linear
     open var mode: Mode = Mode.linear
     
-    private var _cubicIntensity = CGFloat(0.2)
+    public var _cubicIntensity = CGFloat(0.2)
     
     /// Intensity for cubic lines (min = 0.05, max = 1)
     ///
@@ -90,7 +90,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     }
     
     /// Sets the one and ONLY color that should be used for this DataSet.
-    /// Internally, this recreates the colors array and adds the specified color.
+    /// publicly, this recreates the colors array and adds the specified color.
     open func setCircleColor(_ color: NSUIColor)
     {
         circleColors.removeAll(keepingCapacity: false)
@@ -136,7 +136,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     open var lineCapType = CGLineCap.butt
     
     /// formatter for customizing the position of the fill-line
-    private var _fillFormatter: IFillFormatter = DefaultFillFormatter()
+    public var _fillFormatter: IFillFormatter = DefaultFillFormatter()
     
     /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
     open var fillFormatter: IFillFormatter?

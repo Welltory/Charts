@@ -19,9 +19,9 @@ import CoreGraphics
 @objc(ZoomChartViewJob)
 open class ZoomViewJob: ViewPortJob
 {
-    internal var scaleX: CGFloat = 0.0
-    internal var scaleY: CGFloat = 0.0
-    internal var axisDependency: YAxis.AxisDependency = .left
+    public var scaleX: CGFloat = 0.0
+    public var scaleY: CGFloat = 0.0
+    public var axisDependency: YAxis.AxisDependency = .left
     
     @objc public init(
         viewPortHandler: ViewPortHandler,

@@ -20,7 +20,7 @@ import CoreGraphics
 open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
 {
     /// A nested array of elements ordered logically (i.e not in visual/drawing order) for use with VoiceOver.
-    private lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
+    public lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
 
     @objc open weak var dataProvider: BubbleChartDataProvider?
     
@@ -60,7 +60,7 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
         accessibilityPostLayoutChangedNotification()
     }
     
-    private func getShapeSize(
+    public func getShapeSize(
         entrySize: CGFloat,
         maxSize: CGFloat,
         reference: CGFloat,
@@ -73,8 +73,8 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
         return shapeSize
     }
     
-    private var _pointBuffer = CGPoint()
-    private var _sizeBuffer = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _pointBuffer = CGPoint()
+    public var _sizeBuffer = [CGPoint](repeating: CGPoint(), count: 2)
     
     @objc open func drawDataSet(context: CGContext, dataSet: IBubbleChartDataSet, dataSetIndex: Int)
     {
@@ -318,7 +318,7 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
     }
 
     /// Creates a nested array of empty subarrays each of which will be populated with NSUIAccessibilityElements.
-    private func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
+    public func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
     {
         guard let chart = dataProvider as? BubbleChartView else { return [] }
 
@@ -329,7 +329,7 @@ open class BubbleChartRenderer: BarLineScatterCandleBubbleRenderer
     }
 
     /// Creates an NSUIAccessibleElement representing individual bubbles location and relative size.
-    private func createAccessibleElement(withIndex idx: Int,
+    public func createAccessibleElement(withIndex idx: Int,
                                          container: BubbleChartView,
                                          dataSet: IBubbleChartDataSet,
                                          dataSetIndex: Int,

@@ -17,43 +17,43 @@ import CoreGraphics
 open class ViewPortHandler: NSObject
 {
     /// matrix used for touch events
-    private var _touchMatrix = CGAffineTransform.identity
+    public var _touchMatrix = CGAffineTransform.identity
     
     /// this rectangle defines the area in which graph values can be drawn
-    private var _contentRect = CGRect()
+    public var _contentRect = CGRect()
     
-    private var _chartWidth = CGFloat(0.0)
-    private var _chartHeight = CGFloat(0.0)
+    public var _chartWidth = CGFloat(0.0)
+    public var _chartHeight = CGFloat(0.0)
     
     /// minimum scale value on the y-axis
-    private var _minScaleY = CGFloat(1.0)
+    public var _minScaleY = CGFloat(1.0)
     
     /// maximum scale value on the y-axis
-    private var _maxScaleY = CGFloat.greatestFiniteMagnitude
+    public var _maxScaleY = CGFloat.greatestFiniteMagnitude
     
     /// minimum scale value on the x-axis
-    private var _minScaleX = CGFloat(1.0)
+    public var _minScaleX = CGFloat(1.0)
     
     /// maximum scale value on the x-axis
-    private var _maxScaleX = CGFloat.greatestFiniteMagnitude
+    public var _maxScaleX = CGFloat.greatestFiniteMagnitude
     
     /// contains the current scale factor of the x-axis
-    private var _scaleX = CGFloat(1.0)
+    public var _scaleX = CGFloat(1.0)
     
     /// contains the current scale factor of the y-axis
-    private var _scaleY = CGFloat(1.0)
+    public var _scaleY = CGFloat(1.0)
     
     /// current translation (drag distance) on the x-axis
-    private var _transX = CGFloat(0.0)
+    public var _transX = CGFloat(0.0)
     
     /// current translation (drag distance) on the y-axis
-    private var _transY = CGFloat(0.0)
+    public var _transY = CGFloat(0.0)
     
     /// offset that allows the chart to be dragged over its bounds on the x-axis
-    private var _transOffsetX = CGFloat(0.0)
+    public var _transOffsetX = CGFloat(0.0)
     
     /// offset that allows the chart to be dragged over its bounds on the x-axis
-    private var _transOffsetY = CGFloat(0.0)
+    public var _transOffsetY = CGFloat(0.0)
     
     /// Constructor - don't forget calling setChartDimens(...)
     @objc public init(width: CGFloat, height: CGFloat)
@@ -268,7 +268,7 @@ open class ViewPortHandler: NSObject
     }
     
     /// limits the maximum scale and X translation of the given matrix
-    private func limitTransAndScale(matrix: inout CGAffineTransform, content: CGRect?)
+    public func limitTransAndScale(matrix: inout CGAffineTransform, content: CGRect?)
     {
         // min scale-x is 1
         _scaleX = min(max(_minScaleX, matrix.a), _maxScaleX)

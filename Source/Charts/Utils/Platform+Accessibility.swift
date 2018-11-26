@@ -2,12 +2,12 @@ import Foundation
 
 #if os(iOS) || os(tvOS)
 
-internal func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
 {
     UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: element)
 }
 
-internal func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
 {
     UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: element)
 }
@@ -15,7 +15,7 @@ internal func accessibilityPostScreenChangedNotification(withElement element: An
 /// A simple abstraction over UIAccessibilityElement and NSAccessibilityElement.
 open class NSUIAccessibilityElement: UIAccessibilityElement
 {
-    private weak var containerView: UIView?
+    public weak var containerView: UIView?
 
     final var isHeader: Bool = false
     {
@@ -57,7 +57,7 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
 
 extension NSUIView
 {
-    /// An array of accessibilityElements that is used to implement UIAccessibilityContainer internally.
+    /// An array of accessibilityElements that is used to implement UIAccessibilityContainer publicly.
     /// Subclasses **MUST** override this with an array of such elements.
     @objc open func accessibilityChildren() -> [Any]?
     {
@@ -91,13 +91,13 @@ extension NSUIView
 
 #if os(OSX)
 
-internal func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
 {
     guard let validElement = element else { return }
     NSAccessibility.post(element: validElement, notification: .layoutChanged)
 }
 
-internal func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
 {
     // Placeholder
 }
@@ -105,7 +105,7 @@ internal func accessibilityPostScreenChangedNotification(withElement element: An
 /// A simple abstraction over UIAccessibilityElement and NSAccessibilityElement.
 open class NSUIAccessibilityElement: NSAccessibilityElement
 {
-    private weak var containerView: NSView?
+    public weak var containerView: NSView?
 
     final var isHeader: Bool = false
     {

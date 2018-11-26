@@ -583,7 +583,7 @@ open class PieChartRenderer: DataRenderer
     }
 
     /// draws the hole in the center of the chart and the transparent circle / hole
-    private func drawHole(context: CGContext)
+    public func drawHole(context: CGContext)
     {
         guard let chart = chart else { return }
 
@@ -639,7 +639,7 @@ open class PieChartRenderer: DataRenderer
     }
 
     /// draws the description text in the center of the pie chart makes most sense when center-hole is enabled
-    private func drawCenterText(context: CGContext)
+    public func drawCenterText(context: CGContext)
     {
         guard
             let chart = chart,
@@ -882,7 +882,7 @@ open class PieChartRenderer: DataRenderer
 
     /// Creates an NSUIAccessibilityElement representing a slice of the PieChart.
     /// The element only has it's container and label set based on the chart and dataSet. Use the modifier to alter traits and frame.
-    private func createAccessibleElement(withIndex idx: Int,
+    public func createAccessibleElement(withIndex idx: Int,
                                          container: PieChartView,
                                          dataSet: IPieChartDataSet,
                                          modifier: (NSUIAccessibilityElement) -> ()) -> NSUIAccessibilityElement {

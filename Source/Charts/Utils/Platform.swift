@@ -233,12 +233,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 	/** On OS X there is no CADisplayLink. Use a 60 fps timer to render the animations. */
 	public class NSUIDisplayLink
     {
-        private var timer: Timer?
-        private var displayLink: CVDisplayLink?
-        private var _timestamp: CFTimeInterval = 0.0
+        public var timer: Timer?
+        public var displayLink: CVDisplayLink?
+        public var _timestamp: CFTimeInterval = 0.0
         
-        private weak var _target: AnyObject?
-        private var _selector: Selector
+        public weak var _target: AnyObject?
+        public var _selector: Selector
         
         public var timestamp: CFTimeInterval
         {
@@ -291,7 +291,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
             stop()
 		}
         
-        private func stop()
+        public func stop()
         {
             if displayLink != nil
             {
@@ -394,10 +394,10 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
 	open class NSUIView: NSView
     {
-        /// A private constant to set the accessibility role during initialization.
+        /// A public constant to set the accessibility role during initialization.
         /// It ensures parity with the iOS element ordering as well as numbered counts of chart components.
         /// (See Platform+Accessibility for details)
-        private let role: NSAccessibility.Role = .list
+        public let role: NSAccessibility.Role = .list
 
         public override init(frame frameRect: NSRect)
         {
@@ -566,7 +566,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
         return rep?.representation(using: .jpeg, properties: [NSBitmapImageRep.PropertyKey.compressionFactor: quality])
 	}
 
-	private var imageContextStack: [CGFloat] = []
+	public var imageContextStack: [CGFloat] = []
 
 	func NSUIGraphicsBeginImageContextWithOptions(_ size: CGSize, _ opaque: Bool, _ scale: CGFloat)
     {

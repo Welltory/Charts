@@ -18,7 +18,7 @@ import CoreGraphics
 
 open class XAxisRendererHorizontalBarChart: XAxisRenderer
 {
-    internal weak var chart: BarChartView?
+    public weak var chart: BarChartView?
     
     @objc public init(viewPortHandler: ViewPortHandler, xAxis: XAxis?, transformer: Transformer?, chart: BarChartView)
     {
@@ -190,7 +190,7 @@ open class XAxisRendererHorizontalBarChart: XAxisRenderer
         return contentRect
     }
     
-    private var _gridLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _gridLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
     
     open override func drawGridLine(context: CGContext, x: CGFloat, y: CGFloat)
     {

@@ -18,7 +18,7 @@ import CoreGraphics
 
 open class AnimatedMoveViewJob: AnimatedViewPortJob
 {
-    internal override func animationUpdate()
+    public override func animationUpdate()
     {
         guard
             let viewPortHandler = viewPortHandler,

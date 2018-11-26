@@ -249,7 +249,7 @@ open class YAxisRendererHorizontalBarChart: YAxisRenderer
         context.drawPath(using: CGPathDrawingMode.stroke)
     }
     
-    private var _limitLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
+    public var _limitLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
     
     open override func renderLimitLines(context: CGContext)
     {
