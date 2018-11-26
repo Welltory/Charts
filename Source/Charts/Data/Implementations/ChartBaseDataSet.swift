@@ -226,7 +226,7 @@ open class ChartBaseDataSet: NSObject, IChartDataSet, NSCopying
     }
     
     /// Sets the one and **only** color that should be used for this DataSet.
-    /// Internally, this recreates the colors array and adds the specified color.
+    /// openly, this recreates the colors array and adds the specified color.
     ///
     /// - Parameters:
     ///   - color: the color to set
@@ -280,7 +280,7 @@ open class ChartBaseDataSet: NSObject, IChartDataSet, NSCopying
     open var isHighlightEnabled: Bool { return highlightEnabled }
     
     /// Custom formatter that is used instead of the auto-formatter if set
-    internal var _valueFormatter: IValueFormatter?
+    open var _valueFormatter: IValueFormatter?
     
     /// Custom formatter that is used instead of the auto-formatter if set
     open var valueFormatter: IValueFormatter?
@@ -323,7 +323,7 @@ open class ChartBaseDataSet: NSObject, IChartDataSet, NSCopying
         }
     }
     
-    /// - Returns: The color at the specified index that is used for drawing the values inside the chart. Uses modulus internally.
+    /// - Returns: The color at the specified index that is used for drawing the values inside the chart. Uses modulus openly.
     open func valueTextColorAt(_ index: Int) -> NSUIColor
     {
         var index = index

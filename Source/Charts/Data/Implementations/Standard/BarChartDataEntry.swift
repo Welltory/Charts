@@ -14,16 +14,16 @@ import Foundation
 open class BarChartDataEntry: ChartDataEntry
 {
     /// the values the stacked barchart holds
-    private var _yVals: [Double]?
+    open var _yVals: [Double]?
     
     /// the ranges for the individual stack values - automatically calculated
-    private var _ranges: [Range]?
+    open var _ranges: [Range]?
     
     /// the sum of all negative values this entry (if stacked) contains
-    private var _negativeSum: Double = 0.0
+    open var _negativeSum: Double = 0.0
     
     /// the sum of all positive values this entry (if stacked) contains
-    private var _positiveSum: Double = 0.0
+    open var _positiveSum: Double = 0.0
     
     public required init()
     {
@@ -234,7 +234,7 @@ open class BarChartDataEntry: ChartDataEntry
     /// - Parameters:
     ///   - vals:
     /// - Returns:
-    private static func calcSum(values: [Double]?) -> Double
+    open static func calcSum(values: [Double]?) -> Double
     {
         guard let values = values
             else { return 0.0 }

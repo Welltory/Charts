@@ -23,7 +23,7 @@ open class LineChartRenderer: LineRadarRenderer
     // that navigates between datasets.
     // NOTE: Unlike the other renderers, LineChartRenderer populates accessibleChartElements in drawCircles due to the nature of its drawing options.
     /// A nested array of elements ordered logically (i.e not in visual/drawing order) for use with VoiceOver.
-    private lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
+    open lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
 
     @objc open weak var dataProvider: LineChartDataProvider?
     
@@ -290,7 +290,7 @@ open class LineChartRenderer: LineRadarRenderer
         }
     }
     
-    private var _lineSegments = [CGPoint](repeating: CGPoint(), count: 2)
+    open var _lineSegments = [CGPoint](repeating: CGPoint(), count: 2)
     
     @objc open func drawLinear(context: CGContext, dataSet: ILineChartDataSet)
     {
@@ -459,7 +459,7 @@ open class LineChartRenderer: LineRadarRenderer
     }
     
     /// Generates the path that is used for filled drawing.
-    private func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath
+    open func generateFilledPath(dataSet: ILineChartDataSet, fillMin: CGFloat, bounds: XBounds, matrix: CGAffineTransform) -> CGPath
     {
         let phaseY = animator.phaseY
         let isDrawSteppedEnabled = dataSet.mode == .stepped
@@ -595,7 +595,7 @@ open class LineChartRenderer: LineRadarRenderer
         drawCircles(context: context)
     }
     
-    private func drawCircles(context: CGContext)
+    open func drawCircles(context: CGContext)
     {
         guard
             let dataProvider = dataProvider,
@@ -800,8 +800,8 @@ open class LineChartRenderer: LineRadarRenderer
     }
 
     /// Creates a nested array of empty subarrays each of which will be populated with NSUIAccessibilityElements.
-    /// This is marked internal to support HorizontalBarChartRenderer as well.
-    private func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
+    /// This is marked open to support HorizontalBarChartRenderer as well.
+    open func accessibilityCreateEmptyOrderedElements() -> [[NSUIAccessibilityElement]]
     {
         guard let chart = dataProvider as? LineChartView else { return [] }
 
@@ -813,8 +813,8 @@ open class LineChartRenderer: LineRadarRenderer
 
     /// Creates an NSUIAccessibleElement representing the smallest meaningful bar of the chart
     /// i.e. in case of a stacked chart, this returns each stack, not the combined bar.
-    /// Note that it is marked internal to support subclass modification in the HorizontalBarChart.
-    private func createAccessibleElement(withIndex idx: Int,
+    /// Note that it is marked open to support subclass modification in the HorizontalBarChart.
+    open func createAccessibleElement(withIndex idx: Int,
                                           container: LineChartView,
                                           dataSet: ILineChartDataSet,
                                           dataSetIndex: Int,

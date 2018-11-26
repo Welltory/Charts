@@ -18,7 +18,7 @@ import CoreGraphics
 
 open class YAxisRendererRadarChart: YAxisRenderer
 {
-    private weak var chart: RadarChartView?
+    open weak var chart: RadarChartView?
     
     @objc public init(viewPortHandler: ViewPortHandler, yAxis: YAxis?, chart: RadarChartView)
     {

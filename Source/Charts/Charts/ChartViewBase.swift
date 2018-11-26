@@ -50,33 +50,33 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// The default IValueFormatter that has been determined by the chart considering the provided minimum and maximum values.
-    internal var _defaultValueFormatter: IValueFormatter? = DefaultValueFormatter(decimals: 0)
+    open var _defaultValueFormatter: IValueFormatter? = DefaultValueFormatter(decimals: 0)
     
     /// object that holds all data that was originally set for the chart, before it was modified or any filtering algorithms had been applied
-    internal var _data: ChartData?
+    open var _data: ChartData?
     
     /// Flag that indicates if highlighting per tap (touch) is enabled
-    private var _highlightPerTapEnabled = true
+    open var _highlightPerTapEnabled = true
     
     /// If set to true, chart continues to scroll after touch up
     @objc open var dragDecelerationEnabled = true
     
     /// Deceleration friction coefficient in [0 ; 1] interval, higher values indicate that speed will decrease slowly, for example if it set to 0, it will stop immediately.
     /// 1 is an invalid value, and will be converted to 0.999 automatically.
-    private var _dragDecelerationFrictionCoef: CGFloat = 0.9
+    open var _dragDecelerationFrictionCoef: CGFloat = 0.9
     
     /// if true, units are drawn next to the values in the chart
-    internal var _drawUnitInChart = false
+    open var _drawUnitInChart = false
     
     /// The object representing the labels on the x-axis
-    internal var _xAxis: XAxis!
+    open var _xAxis: XAxis!
     
     /// The `Description` object of the chart.
     /// This should have been called just "description", but
     @objc open var chartDescription: Description?
         
     /// The legend object containing all data associated with the legend
-    internal var _legend: Legend!
+    open var _legend: Legend!
     
     /// delegate to receive chart events
     @objc open weak var delegate: ChartViewDelegate?
@@ -93,7 +93,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     /// alignment of the no data text
     open var noDataTextAlignment: NSTextAlignment = .left
 
-    internal var _legendRenderer: LegendRenderer!
+    open var _legendRenderer: LegendRenderer!
     
     /// object responsible for rendering the data
     @objc open var renderer: DataRenderer?
@@ -101,16 +101,16 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     @objc open var highlighter: IHighlighter?
     
     /// object that manages the bounds and drawing constraints of the chart
-    internal var _viewPortHandler: ViewPortHandler!
+    open var _viewPortHandler: ViewPortHandler!
     
     /// object responsible for animations
-    internal var _animator: Animator!
+    open var _animator: Animator!
     
     /// flag that indicates if offsets calculation has already been done or not
-    private var _offsetsCalculated = false
+    open var _offsetsCalculated = false
     
     /// array of Highlight objects that reference the highlighted slices in the chart
-    internal var _indicesToHighlight = [Highlight]()
+    open var _indicesToHighlight = [Highlight]()
     
     /// `true` if drawing the marker is enabled when tapping on values
     /// (use the `marker` property to specify a marker)
@@ -123,7 +123,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     /// The marker that is displayed when a value is clicked on the chart
     @objc open var marker: IMarker?
     
-    private var _interceptTouchEvents = false
+    open var _interceptTouchEvents = false
     
     /// An extra offset to be appended to the viewport's top
     @objc open var extraTopOffset: CGFloat = 0.0
@@ -165,7 +165,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         self.removeObserver(self, forKeyPath: "frame")
     }
     
-    internal func initialize()
+    open func initialize()
     {
         #if os(iOS)
             self.backgroundColor = NSUIColor.clear
@@ -264,19 +264,19 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// Calculates the offsets of the chart to the border depending on the position of an eventual legend or depending on the length of the y-axis and x-axis labels and their position
-    internal func calculateOffsets()
+    open func calculateOffsets()
     {
         fatalError("calculateOffsets() cannot be called on ChartViewBase")
     }
     
     /// calcualtes the y-min and y-max value and the y-delta and x-delta value
-    internal func calcMinMax()
+    open func calcMinMax()
     {
         fatalError("calcMinMax() cannot be called on ChartViewBase")
     }
     
     /// calculates the required number of digits for the values that might be drawn in the chart (if enabled), and creates the default value formatter
-    internal func setupDefaultFormatter(min: Double, max: Double)
+    open func setupDefaultFormatter(min: Double, max: Double)
     {
         // check if a custom formatter is set or not
         var reference = Double(0.0)
@@ -343,7 +343,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// Draws the description text in the bottom right corner of the chart (per default)
-    internal func drawDescription(context: CGContext)
+    open func drawDescription(context: CGContext)
     {
         // check if description should be drawn
         guard
@@ -568,7 +568,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     // MARK: - Markers
 
     /// draws all MarkerViews on the highlighted positions
-    internal func drawMarkers(context: CGContext)
+    open func drawMarkers(context: CGContext)
     {
         // if there is no marker view or drawing marker is disabled
         guard
@@ -888,7 +888,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         return true
     }
     
-    internal var _viewportJobs = [ViewPortJob]()
+    open var _viewportJobs = [ViewPortJob]()
     
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
     {

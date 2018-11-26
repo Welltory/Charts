@@ -233,12 +233,12 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
 	/** On OS X there is no CADisplayLink. Use a 60 fps timer to render the animations. */
 	public class NSUIDisplayLink
     {
-        private var timer: Timer?
-        private var displayLink: CVDisplayLink?
-        private var _timestamp: CFTimeInterval = 0.0
+        open var timer: Timer?
+        open var displayLink: CVDisplayLink?
+        open var _timestamp: CFTimeInterval = 0.0
         
-        private weak var _target: AnyObject?
-        private var _selector: Selector
+        open weak var _target: AnyObject?
+        open var _selector: Selector
         
         public var timestamp: CFTimeInterval
         {
@@ -291,7 +291,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
             stop()
 		}
         
-        private func stop()
+        open func stop()
         {
             if displayLink != nil
             {
@@ -394,10 +394,10 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
     
 	open class NSUIView: NSView
     {
-        /// A private constant to set the accessibility role during initialization.
+        /// A open constant to set the accessibility role during initialization.
         /// It ensures parity with the iOS element ordering as well as numbered counts of chart components.
         /// (See Platform+Accessibility for details)
-        private let role: NSAccessibility.Role = .list
+        open let role: NSAccessibility.Role = .list
 
         public override init(frame frameRect: NSRect)
         {
@@ -566,7 +566,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
         return rep?.representation(using: .jpeg, properties: [NSBitmapImageRep.PropertyKey.compressionFactor: quality])
 	}
 
-	private var imageContextStack: [CGFloat] = []
+	open var imageContextStack: [CGFloat] = []
 
 	func NSUIGraphicsBeginImageContextWithOptions(_ size: CGSize, _ opaque: Bool, _ scale: CGFloat)
     {

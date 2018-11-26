@@ -97,7 +97,7 @@ open class DataApproximator: NSObject
         } // else don't keep the point...
     }
     
-    private class Line
+    open class Line
     {
         var sxey: CGFloat
         var exsy: CGFloat

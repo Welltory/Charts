@@ -19,7 +19,7 @@ import CoreGraphics
 
 open class HorizontalBarChartRenderer: BarChartRenderer
 {
-    private class Buffer
+    open class Buffer
     {
         var rects = [CGRect]()
     }
@@ -30,7 +30,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
     }
     
     // [CGRect] per dataset
-    private var _buffers = [Buffer]()
+    open var _buffers = [Buffer]()
     
     open override func initBuffers()
     {
@@ -65,7 +65,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         }
     }
     
-    private func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
+    open override func prepareBuffer(dataSet: IBarChartDataSet, index: Int)
     {
         guard let
             dataProvider = dataProvider,
@@ -177,7 +177,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         }
     }
     
-    private var _barShadowRectBuffer: CGRect = CGRect()
+    open var _barShadowRectBuffer: CGRect = CGRect()
     
     open override func drawDataSet(context: CGContext, dataSet: IBarChartDataSet, index: Int)
     {
@@ -624,7 +624,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
     }
     
     /// Sets the drawing position of the highlight object based on the riven bar-rect.
-    internal override func setHighlightDrawPos(highlight high: Highlight, barRect: CGRect)
+    open override func setHighlightDrawPos(highlight high: Highlight, barRect: CGRect)
     {
         high.setDraw(x: barRect.midY, y: barRect.origin.x + barRect.size.width)
     }

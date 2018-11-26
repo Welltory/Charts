@@ -14,14 +14,14 @@ import CoreGraphics
 
 open class AnimatedZoomViewJob: AnimatedViewPortJob
 {
-    internal var yAxis: YAxis?
-    internal var xAxisRange: Double = 0.0
-    internal var scaleX: CGFloat = 0.0
-    internal var scaleY: CGFloat = 0.0
-    internal var zoomOriginX: CGFloat = 0.0
-    internal var zoomOriginY: CGFloat = 0.0
-    internal var zoomCenterX: CGFloat = 0.0
-    internal var zoomCenterY: CGFloat = 0.0
+    open var yAxis: YAxis?
+    open var xAxisRange: Double = 0.0
+    open var scaleX: CGFloat = 0.0
+    open var scaleY: CGFloat = 0.0
+    open var zoomOriginX: CGFloat = 0.0
+    open var zoomOriginY: CGFloat = 0.0
+    open var zoomCenterX: CGFloat = 0.0
+    open var zoomCenterY: CGFloat = 0.0
 
     @objc public init(
         viewPortHandler: ViewPortHandler,
@@ -60,7 +60,7 @@ open class AnimatedZoomViewJob: AnimatedViewPortJob
         self.zoomOriginY = zoomOriginY
     }
     
-    internal override func animationUpdate()
+    open override func animationUpdate()
     {
         guard
             let viewPortHandler = viewPortHandler,
@@ -88,7 +88,7 @@ open class AnimatedZoomViewJob: AnimatedViewPortJob
         viewPortHandler.refresh(newMatrix: matrix, chart: view, invalidate: true)
     }
     
-    internal override func animationEnd()
+    open override func animationEnd()
     {
         (view as? BarLineChartViewBase)?.calculateOffsets()
         view?.setNeedsDisplay()

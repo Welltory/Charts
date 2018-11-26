@@ -206,7 +206,7 @@ public protocol IChartDataSet
     /// Getting will return the first color in the array.
     var valueTextColor: NSUIColor { get set }
     
-    /// - Returns: The color at the specified index that is used for drawing the values inside the chart. Uses modulus internally.
+    /// - Returns: The color at the specified index that is used for drawing the values inside the chart. Uses modulus openly.
     func valueTextColorAt(_ index: Int) -> NSUIColor
     
     /// the font for the value-text labels

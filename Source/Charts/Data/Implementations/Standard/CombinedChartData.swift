@@ -13,11 +13,11 @@ import Foundation
 
 open class CombinedChartData: BarLineScatterCandleBubbleChartData
 {
-    private var _lineData: LineChartData!
-    private var _barData: BarChartData!
-    private var _scatterData: ScatterChartData!
-    private var _candleData: CandleChartData!
-    private var _bubbleData: BubbleChartData!
+    open var _lineData: LineChartData!
+    open var _barData: BarChartData!
+    open var _scatterData: ScatterChartData!
+    open var _candleData: CandleChartData!
+    open var _bubbleData: BubbleChartData!
     
     public override init()
     {

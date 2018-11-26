@@ -15,8 +15,8 @@ import Foundation
 @objc(ChartIndexAxisValueFormatter)
 open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
 {
-    private var _values: [String] = [String]()
-    private var _valueCount: Int = 0
+    open var _values: [String] = [String]()
+    open var _valueCount: Int = 0
     
     @objc public var values: [String]
     {

@@ -69,19 +69,19 @@ open class ChartDataSet: ChartBaseDataSet
         }
     }
     // TODO: Temporary fix for performance. Will be removed in 4.0
-    private var isIndirectValuesCall = false
+    open var isIndirectValuesCall = false
 
     /// maximum y-value in the value array
-    internal var _yMax: Double = -Double.greatestFiniteMagnitude
+    open var _yMax: Double = -Double.greatestFiniteMagnitude
     
     /// minimum y-value in the value array
-    internal var _yMin: Double = Double.greatestFiniteMagnitude
+    open var _yMin: Double = Double.greatestFiniteMagnitude
     
     /// maximum x-value in the value array
-    internal var _xMax: Double = -Double.greatestFiniteMagnitude
+    open var _xMax: Double = -Double.greatestFiniteMagnitude
     
     /// minimum x-value in the value array
-    internal var _xMin: Double = Double.greatestFiniteMagnitude
+    open var _xMin: Double = Double.greatestFiniteMagnitude
     
     open override func calcMinMax()
     {
@@ -141,7 +141,7 @@ open class ChartDataSet: ChartBaseDataSet
     ///
     /// - Parameters:
     ///   - e:
-    internal func calcMinMax(entry e: ChartDataEntry)
+    open func calcMinMax(entry e: ChartDataEntry)
     {
         calcMinMaxX(entry: e)
         calcMinMaxY(entry: e)

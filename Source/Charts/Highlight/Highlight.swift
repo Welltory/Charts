@@ -16,30 +16,30 @@ import CoreGraphics
 open class Highlight: NSObject
 {
     /// the x-value of the highlighted value
-    fileprivate var _x = Double.nan
+    open var _x = Double.nan
     
     /// the y-value of the highlighted value
-    fileprivate var _y = Double.nan
+    open var _y = Double.nan
     
     /// the x-pixel of the highlight
-    private var _xPx = CGFloat.nan
+    open var _xPx = CGFloat.nan
     
     /// the y-pixel of the highlight
-    private var _yPx = CGFloat.nan
+    open var _yPx = CGFloat.nan
     
     /// the index of the data object - in case it refers to more than one
     @objc open var dataIndex = Int(-1)
     
     /// the index of the dataset the highlighted value is in
-    fileprivate var _dataSetIndex = Int(0)
+    open var _dataSetIndex = Int(0)
     
     /// index which value of a stacked bar entry is highlighted
     /// 
     /// **default**: -1
-    fileprivate var _stackIndex = Int(-1)
+    open var _stackIndex = Int(-1)
     
     /// the axis the highlighted value belongs to
-    private var _axis: YAxis.AxisDependency = YAxis.AxisDependency.left
+    open var _axis: YAxis.AxisDependency = YAxis.AxisDependency.left
     
     /// the x-position (pixels) on which this highlight object was last drawn
     @objc open var drawX: CGFloat = 0.0

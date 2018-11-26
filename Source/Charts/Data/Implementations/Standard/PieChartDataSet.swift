@@ -21,7 +21,7 @@ open class PieChartDataSet: ChartDataSet, IPieChartDataSet
         case outsideSlice
     }
 
-    private func initialize()
+    open func initialize()
     {
         self.valueTextColor = NSUIColor.white
         self.valueFont = NSUIFont.systemFont(ofSize: 13.0)
@@ -39,14 +39,14 @@ open class PieChartDataSet: ChartDataSet, IPieChartDataSet
         initialize()
     }
 
-    internal override func calcMinMax(entry e: ChartDataEntry)
+    open override func calcMinMax(entry e: ChartDataEntry)
     {
         calcMinMaxY(entry: e)
     }
 
     // MARK: - Styling functions and accessors
 
-    private var _sliceSpace = CGFloat(0.0)
+    open var _sliceSpace = CGFloat(0.0)
 
     /// the space in pixels between the pie-slices
     /// **default**: 0

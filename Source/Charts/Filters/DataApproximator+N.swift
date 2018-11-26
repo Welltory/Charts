@@ -11,7 +11,7 @@
 import Foundation
 
 extension CGPoint {
-    fileprivate func distanceToLine(from linePoint1: CGPoint, to linePoint2: CGPoint) -> CGFloat {
+    public func distanceToLine(from linePoint1: CGPoint, to linePoint2: CGPoint) -> CGFloat {
         let dx = linePoint2.x - linePoint1.x
         let dy = linePoint2.y - linePoint1.y
         
@@ -22,7 +22,7 @@ extension CGPoint {
     }
 }
 
-private struct LineAlt {
+public struct LineAlt {
     let start: Int
     let end: Int
     
@@ -54,11 +54,11 @@ private struct LineAlt {
 }
 
 extension LineAlt: Comparable {
-    static func ==(lhs: LineAlt, rhs: LineAlt) -> Bool {
+    public static func ==(lhs: LineAlt, rhs: LineAlt) -> Bool {
         return (lhs.start == rhs.start) && (lhs.end == rhs.end) && (lhs.index == rhs.index)
     }
     
-    static func <(lhs: LineAlt, rhs: LineAlt) -> Bool {
+    public static func <(lhs: LineAlt, rhs: LineAlt) -> Bool {
         return lhs.distance < rhs.distance
     }
 }
@@ -120,12 +120,12 @@ extension DataApproximator {
     }
     
     // Keeps array sorted
-    private static func insertLine(_ line: LineAlt, into array: inout [LineAlt]) {
+    open static func insertLine(_ line: LineAlt, into array: inout [LineAlt]) {
         let insertionIndex = self.insertionIndex(for: line, into: &array)
         array.insert(line, at: insertionIndex)
     }
     
-    private static func insertionIndex(for line: LineAlt, into array: inout [LineAlt]) -> Int {
+    open static func insertionIndex(for line: LineAlt, into array: inout [LineAlt]) -> Int {
         var indices = array.indices
         
         while !indices.isEmpty {

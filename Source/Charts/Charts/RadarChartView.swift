@@ -36,13 +36,13 @@ open class RadarChartView: PieRadarChartViewBase
     @objc open var drawWeb = true
     
     /// modulus that determines how many labels and web-lines are skipped before the next is drawn
-    private var _skipWebLineCount = 0
+    open var _skipWebLineCount = 0
     
     /// the object reprsenting the y-axis labels
-    private var _yAxis: YAxis!
+    open var _yAxis: YAxis!
     
-    internal var _yAxisRenderer: YAxisRendererRadarChart!
-    internal var _xAxisRenderer: XAxisRendererRadarChart!
+    open var _yAxisRenderer: YAxisRendererRadarChart!
+    open var _xAxisRenderer: XAxisRendererRadarChart!
     
     public override init(frame: CGRect)
     {
@@ -54,7 +54,7 @@ open class RadarChartView: PieRadarChartViewBase
         super.init(coder: aDecoder)
     }
     
-    internal override func initialize()
+    open override func initialize()
     {
         super.initialize()
         
@@ -68,7 +68,7 @@ open class RadarChartView: PieRadarChartViewBase
         self.highlighter = RadarHighlighter(chart: self)
     }
 
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         super.calcMinMax()
         
@@ -205,12 +205,12 @@ open class RadarChartView: PieRadarChartViewBase
         }
     }
     
-    internal override var requiredLegendOffset: CGFloat
+    open override var requiredLegendOffset: CGFloat
     {
         return _legend.font.pointSize * 4.0
     }
 
-    internal override var requiredBaseOffset: CGFloat
+    open override var requiredBaseOffset: CGFloat
     {
         return _xAxis.isEnabled && _xAxis.isDrawLabelsEnabled ? _xAxis.labelRotatedWidth : 10.0
     }

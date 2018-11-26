@@ -19,7 +19,7 @@ import CoreGraphics
 
 open class RadarChartRenderer: LineRadarRenderer
 {
-    private lazy var accessibilityXLabels: [String] = {
+    open lazy var accessibilityXLabels: [String] = {
         var labels: [String] = []
 
         guard let chart = chart else { return [] }
@@ -80,7 +80,7 @@ open class RadarChartRenderer: LineRadarRenderer
     ///   - context:
     ///   - dataSet:
     ///   - mostEntries: the entry count of the dataset with the most entries
-    internal func drawDataSet(context: CGContext, dataSet: IRadarChartDataSet, mostEntries: Int)
+    open func drawDataSet(context: CGContext, dataSet: IRadarChartDataSet, mostEntries: Int)
     {
         guard let chart = chart else { return }
         
@@ -285,7 +285,7 @@ open class RadarChartRenderer: LineRadarRenderer
         drawWeb(context: context)
     }
     
-    private var _webLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
+    open var _webLineSegmentsBuffer = [CGPoint](repeating: CGPoint(), count: 2)
     
     @objc open func drawWeb(context: CGContext)
     {
@@ -354,7 +354,7 @@ open class RadarChartRenderer: LineRadarRenderer
         context.restoreGState()
     }
     
-    private var _highlightPointBuffer = CGPoint()
+    open var _highlightPointBuffer = CGPoint()
 
     open override func drawHighlighted(context: CGContext, indices: [Highlight])
     {
@@ -438,7 +438,7 @@ open class RadarChartRenderer: LineRadarRenderer
         context.restoreGState()
     }
     
-    internal func drawHighlightCircle(
+    open func drawHighlightCircle(
         context: CGContext,
         atPoint point: CGPoint,
         innerRadius: CGFloat,
@@ -474,7 +474,7 @@ open class RadarChartRenderer: LineRadarRenderer
         context.restoreGState()
     }
 
-    private func createAccessibleElement(withDescription description: String,
+    open func createAccessibleElement(withDescription description: String,
                                          container: RadarChartView,
                                          dataSet: IRadarChartDataSet,
                                          modifier: (NSUIAccessibilityElement) -> ()) -> NSUIAccessibilityElement {

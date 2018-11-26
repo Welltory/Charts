@@ -21,18 +21,18 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
 {
     /// the maximum number of entries to which values will be drawn
     /// (entry numbers greater than this value will cause value-labels to disappear)
-    internal var _maxVisibleCount = 100
+    open var _maxVisibleCount = 100
     
     /// flag that indicates if auto scaling on the y axis is enabled
-    private var _autoScaleMinMaxEnabled = false
+    open var _autoScaleMinMaxEnabled = false
     
-    private var _pinchZoomEnabled = false
-    private var _doubleTapToZoomEnabled = true
-    private var _dragXEnabled = true
-    private var _dragYEnabled = true
+    open var _pinchZoomEnabled = false
+    open var _doubleTapToZoomEnabled = true
+    open var _dragXEnabled = true
+    open var _dragYEnabled = true
     
-    private var _scaleXEnabled = true
-    private var _scaleYEnabled = true
+    open var _scaleXEnabled = true
+    open var _scaleYEnabled = true
     
     /// the color for the background of the chart-drawing area (everything behind the grid lines).
     @objc open var gridBackgroundColor = NSUIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1.0)
@@ -64,11 +64,11 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     
     /// The left y-axis object. In the horizontal bar-chart, this is the
     /// top axis.
-    @objc open internal(set) var leftAxis = YAxis(position: .left)
+    @objc open open(set) var leftAxis = YAxis(position: .left)
     
     /// The right y-axis object. In the horizontal bar-chart, this is the
     /// bottom axis.
-    @objc open internal(set) var rightAxis = YAxis(position: .right)
+    @objc open open(set) var rightAxis = YAxis(position: .right)
 
     /// The left Y axis renderer. This is a read-write property so you can set your own custom renderer here.
     /// **default**: An instance of YAxisRenderer
@@ -78,22 +78,22 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     /// **default**: An instance of YAxisRenderer
     @objc open lazy var rightYAxisRenderer = YAxisRenderer(viewPortHandler: _viewPortHandler, yAxis: rightAxis, transformer: _rightAxisTransformer)
     
-    internal var _leftAxisTransformer: Transformer!
-    internal var _rightAxisTransformer: Transformer!
+    open var _leftAxisTransformer: Transformer!
+    open var _rightAxisTransformer: Transformer!
     
     /// The X axis renderer. This is a read-write property so you can set your own custom renderer here.
     /// **default**: An instance of XAxisRenderer
     @objc open lazy var xAxisRenderer = XAxisRenderer(viewPortHandler: _viewPortHandler, xAxis: _xAxis, transformer: _leftAxisTransformer)
     
-    internal var _tapGestureRecognizer: NSUITapGestureRecognizer!
-    internal var _doubleTapGestureRecognizer: NSUITapGestureRecognizer!
+    open var _tapGestureRecognizer: NSUITapGestureRecognizer!
+    open var _doubleTapGestureRecognizer: NSUITapGestureRecognizer!
     #if !os(tvOS)
-    internal var _pinchGestureRecognizer: NSUIPinchGestureRecognizer!
+    open var _pinchGestureRecognizer: NSUIPinchGestureRecognizer!
     #endif
-    internal var _panGestureRecognizer: NSUIPanGestureRecognizer!
+    open var _panGestureRecognizer: NSUIPanGestureRecognizer!
     
     /// flag that indicates if a custom viewport offset has been set
-    private var _customViewPortEnabled = false
+    open var _customViewPortEnabled = false
     
     public override init(frame: CGRect)
     {
@@ -110,7 +110,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         stopDeceleration()
     }
     
-    internal override func initialize()
+    open override func initialize()
     {
         super.initialize()
 
@@ -280,11 +280,11 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         drawMarkers(context: context)
     }
     
-    private var _autoScaleLastLowestVisibleX: Double?
-    private var _autoScaleLastHighestVisibleX: Double?
+    open var _autoScaleLastLowestVisibleX: Double?
+    open var _autoScaleLastHighestVisibleX: Double?
     
     /// Performs auto scaling of the axis by recalculating the minimum and maximum y-values based on the entries currently in view.
-    internal func autoScale()
+    open func autoScale()
     {
         guard let data = _data
             else { return }
@@ -308,13 +308,13 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         calculateOffsets()
     }
     
-    internal func prepareValuePxMatrix()
+    open func prepareValuePxMatrix()
     {
         _rightAxisTransformer.prepareMatrixValuePx(chartXMin: _xAxis._axisMinimum, deltaX: CGFloat(xAxis.axisRange), deltaY: CGFloat(rightAxis.axisRange), chartYMin: rightAxis._axisMinimum)
         _leftAxisTransformer.prepareMatrixValuePx(chartXMin: xAxis._axisMinimum, deltaX: CGFloat(xAxis.axisRange), deltaY: CGFloat(leftAxis.axisRange), chartYMin: leftAxis._axisMinimum)
     }
     
-    internal func prepareOffsetMatrix()
+    open func prepareOffsetMatrix()
     {
         _rightAxisTransformer.prepareMatrixOffset(inverted: rightAxis.isInverted)
         _leftAxisTransformer.prepareMatrixOffset(inverted: leftAxis.isInverted)
@@ -347,7 +347,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         setNeedsDisplay()
     }
     
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         // calculate / set x-axis range
         _xAxis.calculate(min: _data?.xMin ?? 0.0, max: _data?.xMax ?? 0.0)
@@ -357,7 +357,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         rightAxis.calculate(min: _data?.getYMin(axis: .right) ?? 0.0, max: _data?.getYMax(axis: .right) ?? 0.0)
     }
     
-    internal func calculateLegendOffsets(offsetLeft: inout CGFloat, offsetTop: inout CGFloat, offsetRight: inout CGFloat, offsetBottom: inout CGFloat)
+    open func calculateLegendOffsets(offsetLeft: inout CGFloat, offsetTop: inout CGFloat, offsetRight: inout CGFloat, offsetBottom: inout CGFloat)
     {
         // setup offsets for legend
         if _legend !== nil && _legend.isEnabled && !_legend.drawInside
@@ -414,7 +414,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
-    internal override func calculateOffsets()
+    open override func calculateOffsets()
     {
         if !_customViewPortEnabled
         {
@@ -476,7 +476,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     }
     
     /// draws the grid background
-    internal func drawGridBackground(context: CGContext)
+    open func drawGridBackground(context: CGContext)
     {
         if drawGridBackgroundEnabled || drawBordersEnabled
         {
@@ -505,27 +505,27 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     
     // MARK: - Gestures
     
-    private enum GestureScaleAxis
+    public enum GestureScaleAxis
     {
         case both
         case x
         case y
     }
     
-    private var _isDragging = false
-    private var _isScaling = false
-    private var _gestureScaleAxis = GestureScaleAxis.both
-    private var _closestDataSetToTouch: IChartDataSet!
-    private var _panGestureReachedEdge: Bool = false
-    private weak var _outerScrollView: NSUIScrollView?
+    open var _isDragging = false
+    open var _isScaling = false
+    open var _gestureScaleAxis = GestureScaleAxis.both
+    open var _closestDataSetToTouch: IChartDataSet!
+    open var _panGestureReachedEdge: Bool = false
+    open weak var _outerScrollView: NSUIScrollView?
     
-    private var _lastPanPoint = CGPoint() /// This is to prevent using setTranslation which resets velocity
+    open var _lastPanPoint = CGPoint() /// This is to prevent using setTranslation which resets velocity
     
-    private var _decelerationLastTime: TimeInterval = 0.0
-    private var _decelerationDisplayLink: NSUIDisplayLink!
-    private var _decelerationVelocity = CGPoint()
+    open var _decelerationLastTime: TimeInterval = 0.0
+    open var _decelerationDisplayLink: NSUIDisplayLink!
+    open var _decelerationVelocity = CGPoint()
     
-    @objc private func tapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
+    @objc open func tapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
     {
         if _data === nil
         {
@@ -551,7 +551,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
-    @objc private func doubleTapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
+    @objc open func doubleTapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
     {
         if _data === nil
         {
@@ -580,7 +580,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     }
     
     #if !os(tvOS)
-    @objc private func pinchGestureRecognized(_ recognizer: NSUIPinchGestureRecognizer)
+    @objc open func pinchGestureRecognized(_ recognizer: NSUIPinchGestureRecognizer)
     {
         if recognizer.state == NSUIGestureRecognizerState.began
         {
@@ -670,7 +670,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
     }
     #endif
     
-    @objc private func panGestureRecognized(_ recognizer: NSUIPanGestureRecognizer)
+    @objc open func panGestureRecognized(_ recognizer: NSUIPanGestureRecognizer)
     {
         if recognizer.state == NSUIGestureRecognizerState.began && recognizer.nsuiNumberOfTouches() > 0
         {
@@ -789,7 +789,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
-    private func performPanChange(translation: CGPoint) -> Bool
+    open func performPanChange(translation: CGPoint) -> Bool
     {
         var translation = translation
         
@@ -821,7 +821,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         return matrix.tx != originalMatrix.tx || matrix.ty != originalMatrix.ty
     }
     
-    private func isTouchInverted() -> Bool
+    open func isTouchInverted() -> Bool
     {
         return isAnyAxisInverted &&
             _closestDataSetToTouch !== nil &&
@@ -837,7 +837,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
-    @objc private func decelerationLoop()
+    @objc open func decelerationLoop()
     {
         let currentTime = CACurrentMediaTime()
         
@@ -870,7 +870,7 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
     }
     
-    private func nsuiGestureRecognizerShouldBegin(_ gestureRecognizer: NSUIGestureRecognizer) -> Bool
+    open func nsuiGestureRecognizerShouldBegin(_ gestureRecognizer: NSUIGestureRecognizer) -> Bool
     {
         if gestureRecognizer == _panGestureRecognizer
         {

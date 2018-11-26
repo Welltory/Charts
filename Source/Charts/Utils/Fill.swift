@@ -27,16 +27,16 @@ public enum FillType: Int
 @objc(ChartFill)
 open class Fill: NSObject
 {
-    private var _type: FillType = FillType.empty
-    private var _color: CGColor?
-    private var _gradient: CGGradient?
-    private var _gradientAngle: CGFloat = 0.0
-    private var _gradientStartOffsetPercent: CGPoint = CGPoint()
-    private var _gradientStartRadiusPercent: CGFloat = 0.0
-    private var _gradientEndOffsetPercent: CGPoint = CGPoint()
-    private var _gradientEndRadiusPercent: CGFloat = 0.0
-    private var _image: CGImage?
-    private var _layer: CGLayer?
+    open var _type: FillType = FillType.empty
+    open var _color: CGColor?
+    open var _gradient: CGGradient?
+    open var _gradientAngle: CGFloat = 0.0
+    open var _gradientStartOffsetPercent: CGPoint = CGPoint()
+    open var _gradientStartRadiusPercent: CGFloat = 0.0
+    open var _gradientEndOffsetPercent: CGPoint = CGPoint()
+    open var _gradientEndRadiusPercent: CGFloat = 0.0
+    open var _image: CGImage?
+    open var _layer: CGLayer?
     
     // MARK: Properties
     

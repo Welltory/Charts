@@ -80,7 +80,7 @@ open class YAxis: AxisBase
     @objc open var labelXOffset: CGFloat = 10.0
     
     /// the side this axis object represents
-    private var _axisDependency = AxisDependency.left
+    open var _axisDependency = AxisDependency.left
     
     /// the minimum width that the axis should take
     /// 

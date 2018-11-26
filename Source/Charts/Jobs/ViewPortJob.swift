@@ -16,12 +16,12 @@ import CoreGraphics
 @objc(ChartViewPortJob)
 open class ViewPortJob: NSObject
 {
-    internal var point: CGPoint = CGPoint()
-    internal weak var viewPortHandler: ViewPortHandler?
-    internal var xValue: Double = 0.0
-    internal var yValue: Double = 0.0
-    internal weak var transformer: Transformer?
-    internal weak var view: ChartViewBase?
+    open var point: CGPoint = CGPoint()
+    open weak var viewPortHandler: ViewPortHandler?
+    open var xValue: Double = 0.0
+    open var yValue: Double = 0.0
+    open weak var transformer: Transformer?
+    open weak var view: ChartViewBase?
     
     @objc public init(
         viewPortHandler: ViewPortHandler,

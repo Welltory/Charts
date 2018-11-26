@@ -34,7 +34,7 @@ open class HorizontalBarHighlighter: BarHighlighter
         return high
     }
     
-    internal override func buildHighlights(
+    open override func buildHighlights(
         dataSet set: IChartDataSet,
         dataSetIndex: Int,
         xValue: Double,
@@ -61,7 +61,7 @@ open class HorizontalBarHighlighter: BarHighlighter
         return highlights
     }
     
-    internal override func getDistance(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) -> CGFloat
+    open override func getDistance(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat) -> CGFloat
     {
         return abs(y1 - y2)
     }
