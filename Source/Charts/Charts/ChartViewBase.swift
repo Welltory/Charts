@@ -69,7 +69,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     open var _drawUnitInChart = false
     
     /// The object representing the labels on the x-axis
-    open var _xAxis: XAxis!
+    @objc open var _xAxis: XAxis!
     
     /// The `Description` object of the chart.
     /// This should have been called just "description", but
