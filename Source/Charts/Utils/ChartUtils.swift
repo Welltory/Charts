@@ -24,21 +24,21 @@ extension Comparable {
     }
 }
 
-extension FloatingPoint
+public extension FloatingPoint
 {
-    var DEG2RAD: Self
+    public var DEG2RAD: Self
     {
         return self * .pi / 180
     }
 
-    var RAD2DEG: Self
+    public var RAD2DEG: Self
     {
         return self * 180 / .pi
     }
 
     /// - Note: Value must be in degrees
     /// - Returns: An angle between 0.0 < 360.0 (not less than zero, less than 360)
-    var normalizedAngle: Self
+    public var normalizedAngle: Self
     {
         let angle = truncatingRemainder(dividingBy: 360)
         return (sign == .minus) ? angle + 360 : angle
