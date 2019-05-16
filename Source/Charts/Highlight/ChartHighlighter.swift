@@ -135,7 +135,7 @@ open class ChartHighlighter : NSObject, IHighlighter
         {
             if axis == nil || high.axis == axis
             {
-                let cDistance = getDistance(x1: x, y1: y, x2: high.xPx, y2: high.yPx)
+                let cDistance = abs(CGFloat(high.xPx - x)) // getDistance(x1: x, y1: y, x2: high.xPx, y2: high.yPx)
 
                 if cDistance < distance
                 {
