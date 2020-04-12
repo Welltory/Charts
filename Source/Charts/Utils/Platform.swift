@@ -566,7 +566,7 @@ public typealias NSUIGestureRecognizerState = UIGestureRecognizer.State
         return rep?.representation(using: .jpeg, properties: [NSBitmapImageRep.PropertyKey.compressionFactor: quality])
 	}
 
-	open var imageContextStack: [CGFloat] = []
+	public var imageContextStack: [CGFloat] = []
 
 	func NSUIGraphicsBeginImageContextWithOptions(_ size: CGSize, _ opaque: Bool, _ scale: CGFloat)
     {

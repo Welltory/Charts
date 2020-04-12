@@ -91,13 +91,13 @@ extension NSUIView
 
 #if os(OSX)
 
-open func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
 {
     guard let validElement = element else { return }
     NSAccessibility.post(element: validElement, notification: .layoutChanged)
 }
 
-open func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
 {
     // Placeholder
 }
