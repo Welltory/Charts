@@ -16,6 +16,12 @@ import CoreGraphics
     import UIKit
 #endif
 
+open class Buffer
+{
+    public init(){}
+    open var rects = [CGRect]()
+}
+
 open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
 {
     /// A nested array of elements ordered logically (i.e not in visual/drawing order) for use with VoiceOver
@@ -39,12 +45,6 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
     ///
     /// The ````open```` specifier is to allow subclasses (HorizontalBar) to populate the same array
     open lazy var accessibilityOrderedElements: [[NSUIAccessibilityElement]] = accessibilityCreateEmptyOrderedElements()
-
-    open class Buffer
-    {
-        public init(){}
-        open var rects = [CGRect]()
-    }
     
     @objc open weak var dataProvider: BarChartDataProvider?
     
@@ -56,7 +56,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
     }
     
     // [CGRect] per dataset
-    private var _buffers = [Buffer]()
+    open var _buffers = [Buffer]()
     
     open override func initBuffers()
     {
